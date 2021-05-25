@@ -10,7 +10,6 @@ type RandomNumberResponse struct {
 }
 
 func getRandomNumber() int {
-	//return 2
 	r, _ := http.Get(config.RandomNumberUrl)
 
 	var response RandomNumberResponse
