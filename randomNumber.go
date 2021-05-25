@@ -12,7 +12,7 @@ type RandomNumberResponse struct {
 
 func getRandomNumber() int {
 	//return 2
-	r, _ := http.Get("https://codechallenge.boohma.com/random")
+	r, _ := http.Get(config.RandomNumberUrl)
 
 	var response RandomNumberResponse
 	_ = json.NewDecoder(r.Body).Decode(&response)
