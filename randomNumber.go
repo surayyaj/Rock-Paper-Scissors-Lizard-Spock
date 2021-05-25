@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
 
@@ -16,8 +15,6 @@ func getRandomNumber() int {
 
 	var response RandomNumberResponse
 	_ = json.NewDecoder(r.Body).Decode(&response)
-
-	fmt.Println(response.RandomNumber)
 
 	return response.RandomNumber
 }
