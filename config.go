@@ -11,7 +11,9 @@ type ChoiceItem struct {
 }
 
 type Config struct {
-	Choices []ChoiceItem `json:"choices"`
+	Host            string       `json:"host"`
+	Choices         []ChoiceItem `json:"choices"`
+	RandomNumberUrl string       `json:"randomNumberUrl"`
 }
 
 func LoadConfiguration(file string) (Config, error) {
