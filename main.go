@@ -8,13 +8,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
+var config Config
+
 var choices []*Choice
 
 func main() {
-	config, err := LoadConfiguration("config.json")
-	if err != nil {
-		panic(err)
-	}
+	config, _ = LoadConfiguration("config.json")
 	choices = LoadChoices(&config)
 
 	r := mux.NewRouter()
@@ -22,7 +21,7 @@ func main() {
 	r.HandleFunc("/choice", getChoice).Methods("GET")
 	r.HandleFunc("/play", play).Methods("POST", "OPTIONS")
 
-	log.Fatal(http.ListenAndServe(":8000", r))
+	log.Fatal(http.ListenAndServe(config.Host, r))
 }
 
 func getChoices(w http.ResponseWriter, r *http.Request) {
